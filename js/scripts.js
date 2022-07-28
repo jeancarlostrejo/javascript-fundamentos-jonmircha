@@ -578,7 +578,7 @@ for (let i = 0; i < numeros.length; i++) {
 
 /* **********     Curso JavaScript: 18. Destructuración     ********** */
 
-const numeros = [1, 2, 3];
+/* const numeros = [1, 2, 3];
 
 //Sin destructuracion
 let uno = numeros[0];
@@ -596,9 +596,476 @@ const persona = {
   nombre: "Jean Carlos",
   apellido: "Trejo Villamizar",
   edad: 26,
+}; */
+
+/* os nombre de las variables deben coincidir con las propiedades del objeto. Se puede renombrar una variable con los dos puntos */
+/* let { nombre, apellido, edad: age } = persona;
+
+console.log(nombre, apellido, age); */
+
+/* **********     Curso JavaScript: 19. Objetos literales     ********** */
+
+/* const nombre = "Shushu";
+let edad = 12;
+
+const perro = {
+  nombre: nombre,
+  edad: edad,
+  ladrar: function () {
+    console.log("Guaaauu guaaau!!!");
+  },
 };
 
-//os nombre de las variables deben coincidir con las propiedades del objeto. Se puede renombrar una variable con los dos puntos
-let { nombre, apellido, edad: age } = persona;
+console.log(perro);
+perro.ladrar();
 
-console.log(nombre, apellido, age);
+const dog = {
+  nombre,
+  edad,
+  raza: "Callejero",
+  ladrar() {
+    console.log("Guaau Guaauuu guaaau!!");
+  },
+};
+
+console.log(dog);
+dog.ladrar(); */
+
+/* **********     Curso JavaScript: 20. Parámetros REST & Operador Spread     ********** */
+//Parametro REST
+/* function sumar(a, b, ...c) {
+  let resultado = a + b;
+
+  c.forEach(function (n) {
+    resultado += n;
+  });
+
+  return resultado;
+}
+
+console.log(sumar(1, 2));
+console.log(sumar(1, 2, 3));
+console.log(sumar(1, 2, 3, 4));
+console.log(sumar(1, 2, 3, 4, 5));
+console.log(sumar(1, 2, 3, 4, 5, 6));
+console.log(sumar(1, 2, 3, 4, 5, 6, 7));
+
+const arr1 = [1, 2, 3, 4, 5],
+  arr2 = [6, 7, 8, 9, 0];
+
+//Operador Spread
+const arr3 = [...arr1, ...arr2];
+
+console.log(arr3); */
+
+/* **********     Curso JavaScript: 21. Arrow Functions - #jonmircha     ********** */
+
+/* const saludar = () => console.log(`hola`);
+
+saludar(); */
+
+/* const saludar = (nombre) => {
+  console.log(`hola ${nombre}`);
+};
+
+saludar("Jean Carlos"); */
+
+/* const sumar = function (a, b) {
+  return a + b;
+}; */
+
+/* const sumar = (a, b) => a + b;
+
+console.log(sumar(8, 7));
+
+const funcionDEVariasLineas = () => {
+  console.log("uno");
+  console.log("dos");
+  console.log("tres");
+};
+
+funcionDEVariasLineas();
+
+const numeros = [1, 2, 3, 4];
+
+numeros.forEach((el, index) =>
+  console.log(`${el} esta en la posicion ${index}`)
+); */
+
+/* function Perro() {
+  console.log(this);
+}
+
+Perro(); */
+
+/* Con arrows functions, el objeto this captura el contexto del objeto en el que se encuentra declarada,
+asi que no es bueno declarar metodos con arrow function dentro de un objeto literal, sino declararlas como lo piden los como objetos literales */
+/* const perro = {
+  nombre: "Shushu",
+  edad: 12,
+  ladrar: () => {
+    console.log(this);
+  },
+}; */
+/* const perro = {
+  nombre: "Shushu",
+  edad: 12,
+  ladrar() {
+    console.log(this);
+  },
+};
+
+perro.ladrar(); */
+
+/* **********     Curso JavaScript: 22. Prototipos y Curso JavaScript: 23. Herencia     ********** */
+// POO
+/*
+    Clases - Modelo a seguir.
+    Objetos - Es una instancia de una clase
+      Atributos - es una característica o propiedad del objeto (son variables dentro de un objeto)
+      Métodos - son las acciones que un objeto puede realizar (son funciones dentro de un objeto)
+     */
+
+/* const animal = {
+  nomrbre: "Snoopy",
+  sonar() {
+    console.log("Hago sonidos porque estoy vivo");
+  },
+};
+
+const animal2 = {
+  nomrbre: "Lola Bunny",
+  sonar() {
+    console.log("Hago sonidos porque estoy vivo");
+  },
+};
+
+console.log(animal);
+console.log(animal2); */
+
+//Función constructora
+/* function Animal(nombre, genero) {
+  //Atributos
+  this.nombre = nombre;
+  this.genero = genero;
+  //Métodos
+  this.sonar = function () {
+    console.log("Hago sonidos por que estoy vivo");
+  };
+  this.saludar = function () {
+    console.log(`Hola me llamo ${this.nombre}`);
+  };
+} */
+//Función constructora donde asignamos los métodos al Prototipo, no a la función como tal
+/* function Animal(nombre, genero) {
+  //Atributos
+  this.nombre = nombre;
+  this.genero = genero;
+} */
+
+//Métodos agregados al prototipo de la función constructora
+/* Animal.prototype.sonar = function () {
+  console.log("Hago sonidos por que estoy vivo");
+};
+Animal.prototype.saludar = function () {
+  console.log(`Hola me llamo ${this.nombre}`);
+}; */
+
+//Herencia Prototípica
+/* function Perro(nombre, genero, tamanio) {
+  this.super = Animal;
+  this.super(nombre, genero);
+  this.tamanio = tamanio; 
+}*/
+
+//Perro está heredando de Animal
+/* Perro.prototype = new Animal();
+Perro.prototype.constructor = Perro; */
+
+//Sobreescritura de métodos del Prototipo padre en el hijo
+/* Perro.prototype.sonar = function () {
+  console.log("Soy un perro y mi sonido es un ladrido");
+};
+Perro.prototype.ladrar = function () {
+  console.log("Guauuu Guauuu !!!!");
+};
+
+const snoopy = new Perro("Snoopy", "Macho", "Mediano"),
+  lolaBunny = new Animal("Lola Bunny", "Hembra");
+console.log(snoopy);
+console.log(lolaBunny);
+snoopy.sonar();
+snoopy.saludar();
+snoopy.ladrar();
+lolaBunny.sonar();
+lolaBunny.saludar(); */
+
+/* **********     Curso JavaScript: 24. Clases y Curso JavaScript: 25. Métodos estáticos, getters y setters      ********** */
+
+/* class Animal {
+  //el constructor es un método especial que se ejecuta en el momento de instanciar la clase
+  constructor(nombre, genero) {
+    this.nombre = nombre;
+    this.genero = genero;
+  }
+
+  //Métodos
+  sonar() {
+    console.log("Hago sonidos por que estoy vivo");
+  }
+  saludar() {
+    console.log(`Hola me llamo ${this.nombre}`);
+  }
+}
+
+class Perro extends Animal {
+  constructor(nombre, genero, tamanho) {
+    //Con el metodo super() se manda a llamar al constuctor de la clase padre
+    super(nombre, genero);
+    this.tamanho = tamanho;
+    this.raza = null;
+  }
+
+  sonar() {
+    console.log("Soy un perro y mi sonido es un ladrido!");
+  }
+
+  ladrar() {
+    console.log("Guaau Guaaauu!!");
+  }
+  //un método estático se pueden ejecutar sin necesidad de instanciar la clase
+  static queEres() {
+    console.log(
+      "Los perros somos animales mamíferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre."
+    );
+  }
+
+  //Los setters y getters son métodos especiales que nos permiten establecer y obtener los valores de atributos de nuestra clase
+  get getRaza() {
+    return this.raza;
+  }
+  set setRaza(raza) {
+    this.raza = raza;
+  }
+}
+
+const mimi = new Animal("Mimi", "Hembra"),
+  scooby = new Perro("Scooby", "Macho", "Gigante");
+
+console.log(mimi);
+mimi.saludar();
+mimi.sonar();
+console.log(scooby);
+scooby.saludar();
+scooby.sonar();
+scooby.ladrar();
+Perro.queEres();
+console.log(scooby.getRaza);
+scooby.setRaza = "Grán Danés";
+console.log(scooby.getRaza); */
+
+/* **********     Curso JavaScript: 26. Objeto console     ********** */
+/* console.log(console);
+console.error("Esto es un error");
+console.warn("Esto es un aviso");
+console.info("Esto es un mensje informativo");
+console.log("Un registro de lo que ha pasado en nuestra aplicación");
+let nombre = "Jon",
+  apellido = "MirCha",
+  edad = 35;
+console.log(nombre);
+console.log(apellido);
+console.log(edad);
+console.log(nombre, apellido, edad);
+console.log(`Hola mi nombre es ${nombre} ${apellido} y tengo ${edad} años.`);
+console.log(`Hola mi nombre es %s %s y tengo %d años.`, nombre, apellido, edad);
+console.clear();
+console.log(window);
+console.log(document);
+console.dir(window);
+console.dir(document);
+console.clear();
+console.group("Cursos de @jonmircha en YouTube");
+console.log("Curso de JavaScript");
+console.log("Curso de Node.js");
+console.log("Curso de PWAs");
+console.log("Curso de Flexbox");
+console.log("Curso de Diseño y Programación Web");
+console.groupEnd();
+console.groupCollapsed("Cursos de @jonmircha en YouTube");
+console.log("Curso de JavaScript");
+console.log("Curso de Node.js");
+console.log("Curso de PWAs");
+console.log("Curso de Flexbox");
+console.log("Curso de Diseño y Programación Web");
+console.groupEnd();
+console.clear();
+console.log(console);
+console.table(Object.entries(console).sort());
+const numeros = [1, 2, 3, 4, 5],
+  vocales = ["a", "e", "i", "o", "u"];
+console.table(numeros);
+console.table(vocales);
+const perro = {
+  nombre: "Boni",
+  raza: "Boxer",
+  color: "cafe",
+};
+console.table(perro);
+console.clear();
+console.time("Cuanto tiempo tarda mi código");
+const arreglo = Array(1000000);
+for (let i = 0; i < arreglo.length; i++) {
+  arreglo[i] = i;
+}
+console.timeEnd("Cuanto tiempo tarda mi código");
+//console.log(arreglo);
+console.clear();
+for (let i = 0; i <= 100; i++) {
+  console.count("código for");
+  console.log(i);
+}
+console.clear();
+let x = 3,
+  y = 2,
+  pruebaXY = "Se espera que X siempre sea menor que Y";
+console.assert(x < y, { x, y, pruebaXY }); */
+
+/* **********     Curso JavaScript: 27. Objeto Date     ********** */
+
+/* console.log(Date());
+
+let fecha = new Date();
+console.log(fecha);
+//Dia del mes
+console.log(fecha.getDate());
+//día de la semana D L M Mi J V S -> 0 1 2 3 4 5 6
+console.log(fecha.getDay());
+//mes Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic -> 0 1 2 3 4 5 6 7 8 9 10 11
+console.log(fecha.getMonth());
+console.log(fecha.getFullYear());
+console.log(fecha.getHours());
+console.log(fecha.getMinutes());
+console.log(fecha.getSeconds());
+console.log(fecha.getMilliseconds());
+console.log(fecha.toString());
+console.log(fecha.toDateString());
+console.log(fecha.toLocaleString());
+console.log(fecha.toLocaleDateString());
+console.log(fecha.toLocaleTimeString());
+console.log(fecha.getTimezoneOffset());
+console.log(fecha.getUTCDate());
+console.log(fecha.getUTCHours());
+console.log(Date.now());
+const cumpleJean = new Date(1995, 10, 11);
+console.log(cumpleJean); */
+
+/* **********     Curso JavaScript: 28. Objeto Math - #jonmircha     ********** */
+/* console.log(Math);
+console.log(Math.PI);
+console.log(Math.abs(-7.8));
+console.log(Math.ceil(7.2));
+console.log(Math.floor(7.8));
+console.log(Math.round(7.49));
+console.log(Math.sqrt(81));
+console.log(Math.pow(2, 5));
+console.log(Math.sign(-0.3)); // -1 0 1
+console.log(Math.random());
+console.log(Math.round(Math.random() * 1000)); */
+
+/* **********     Curso JavaScript: 29. Operador de Cortocircuito - #jonmircha     ********** */
+/*
+    Cortocircuito OR - cuando el valor de la izquierda en la expresión siempre pueda validar a true, es el valor que se cargará por defecto
+    Cortocircuito AND - cuando el valor de la izquierda en la expresión siempre pueda validar a false, es el valor que se cargará por defecto*/
+/*function saludar(nombre) {
+  nombre = nombre || "Desconocido";
+  console.log(`Hola ${nombre}`);
+}
+saludar("Jon");
+saludar();
+console.log("cadena" || "Valor de la derecha");
+console.log(19 || "Valor de la derecha");
+console.log(true || "Valor de la derecha");
+console.log([] || "Valor de la derecha");
+console.log({} || "Valor de la derecha");
+console.log(false || "Valor de la derecha");
+console.log(null || "Valor de la derecha");
+console.log(undefined || "Valor de la derecha");
+console.log("" || "Valor de la derecha");
+console.log(-2 || "Valor de la derecha");
+console.log(0 || "Valor de la derecha");
+console.log(false && "Valor de la derecha");
+console.log(null && "Valor de la derecha");
+console.log(undefined && "Valor de la derecha");
+console.log("" && "Valor de la derecha");
+console.log(-2 && "Valor de la derecha");
+console.log(0 && "Valor de la derecha");
+console.log("cadena" && "Valor de la derecha");
+console.log(19 && "Valor de la derecha");
+console.log(true && "Valor de la derecha");
+console.log([] && "Valor de la derecha");
+console.log({} && "Valor de la derecha");*/
+
+/* **********     Curso JavaScript: 30. alert, confirm y prompt     ********** */
+//console.log(window);
+//alert("Hola esto es una alerta");
+//confirm("Hola esto es una confirmación");
+//prompt("Hola esto es un aviso y le permite al usuario ingresar un valor");
+
+/* let alerta = alert("Hola esto es una alerta"),
+  confirmacion = confirm("Hola esto es una confirmación"),
+  aviso = prompt(
+    "Hola esto es un aviso y le permite al usuario ingresar un valor"
+  );
+console.log(alerta);
+console.log(confirmacion);
+console.log(aviso); */
+
+/* **********     Curso JavaScript: 31. Expresiones Regulares - #jonmircha     ********** */
+/*
+     Expresiones Regulares
+        Son una secuencia de caracteres que forma un patrón de búsqueda, principalmente utilizada para la búsqueda de patrones de cadenas de caracteres.
+        https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular
+        https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
+    */
+
+/* let cadena =
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum nisi molestiae, tenetur accusamus corporis voluptatum dolore nam numquam dolorem hic blanditiis repellendus ducimus laboriosam libero error rerum, veniam cupiditate voluptatem.";
+
+// let expReg = new RegExp("lorem", "ig");
+// console.log(expReg.test(cadena));
+// console.log(expReg.exec(cadena));
+
+let expReg2 = /lorem{1,}/gi;
+console.log(expReg2.test(cadena));
+console.log(expReg2.exec(cadena)); */
+
+/* **********     Curso JavaScript: 32. Funciones Anónimas Autoejecutables - #jonmircha     ********** */
+/* 
+(function () {
+  console.log("Mi primer IIFE");
+})();
+
+(function (d, w, c) {
+  console.log("Mi segunda IIFE");
+  console.log(d);
+  console.log(w);
+  c.log("Esto es un console.log");
+})(document, window, console);
+
+//Clásica
+(function () {
+  console.log("versión Clásica");
+})();
+//La Crockford (JavaScript The Good Parts)
+(function () {
+  console.log("versión Crockford");
+})();
+//Unaria
++(function () {
+  console.log("versión Unaria");
+})();
+//Facebook
+!(function () {
+  console.log("versión Facebook");
+})(); */
