@@ -1,0 +1,11 @@
+{
+  "cadena": "Jean Carlos",
+  "numero": 26,
+  "booleano": true,
+  "arreglo": ["Leer", "One Piece", "Aprender"],
+  "objeto": {
+    "twitter": "iFerre_11",
+    "email": ["jeancarlostrejo19@gmail.com", "jeancarlos.trejo@unet.edu.ve"]
+  },
+  "nulo": null
+}
